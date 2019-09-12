@@ -30,7 +30,7 @@ env:
 
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-9" CC="gcc-9"; fi
+  - export CXX="g++-9" CC="gcc-9"
   - echo ${CC}
   - echo ${CXX}
   - ${CXX} --version

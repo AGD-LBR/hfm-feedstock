@@ -21,13 +21,6 @@ install:
   # linux
   - if [ "$TRAVIS_OS_NAME" = "linux" ];
     then
-        # sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
-G        # sudo apt-get update -q;
-        # sudo apt-get install gcc-9 -y;
-        # sudo rm /usr/bin/gcc;
-        # sudo rm /usr/bin/g++;
-        # sudo ln -s /usr/bin/gcc-9 /usr/bin/gcc;
-        # sudo ln -s /usr/bin/g++-9 /usr/bin/g++;
         wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
         bash miniconda.sh -b -p $HOME/miniconda;
         eval "$($HOME/miniconda/bin/conda shell.bash hook)";

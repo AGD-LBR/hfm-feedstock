@@ -21,11 +21,11 @@ install:
     then
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
         sudo apt-get update -q;
-        sudo apt-get install gcc-8 -y;
-        export CC=/usr/bin/gcc-8;
-        export CXX=/usr/bin/g++-8;
+        sudo apt-get install gcc-9 -y;
+        sudo rm /usr/bin/gcc;
         sudo rm /usr/bin/g++;
-        sudo ln -s /usr/bin/g++-8 /usr/bin/g++;
+        sudo ln -s /usr/bin/gcc-9 /usr/bin/gcc;
+        sudo ln -s /usr/bin/g++-9 /usr/bin/g++;
         wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
         bash miniconda.sh -b -p $HOME/miniconda;
         eval "$($HOME/miniconda/bin/conda shell.bash hook)";

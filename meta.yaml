@@ -1,0 +1,36 @@
+package:
+    name: hfm
+    version: 0.2.0
+
+source:
+    git_url: https://github.com/Mirebeau/HamiltonFastMarching
+
+build:
+    number: 1000
+
+requirements:
+    build:
+        - {{ compiler('cxx') }}
+        - cmake
+    host:
+        - setuptools
+        - pybind11
+        - numpy
+    run:
+        - pybind11
+        - numpy
+
+test:
+    imports:
+        HFMpy.HFM_Isotropic2
+
+about:
+    dev_url: https://github.com/Mirebeau/HamiltonFastMarching
+    license: Licence GPU GPL v3
+    license_family: GPL
+
+extra:
+    recipe-maintainers:
+        - gouarin
+        - hleclerc
+        

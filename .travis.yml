@@ -30,8 +30,8 @@ env:
 
 
 install:
+  - export CXX_FOR_BUILD="g++-9" CC_FOR_BUILD="gcc-9"
   - export CXX="g++-9" CC="gcc-9"
-  - echo ${CC}
   - echo ${CXX}
   - ${CXX} --version
   # linux

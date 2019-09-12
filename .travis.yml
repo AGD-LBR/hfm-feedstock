@@ -33,8 +33,8 @@ install:
   # linux
   - if [ "$TRAVIS_OS_NAME" = "linux" ];
     then
-        rm /usr/bin/c++;
-        ln -s /usr/bin/g++-9 /usr/bin/c++;
+        sudo rm /usr/bin/c++;
+        sudo ln -s /usr/bin/g++-9 /usr/bin/c++;
         ls -l /usr/bin/c++;
         wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
         bash miniconda.sh -b -p $HOME/miniconda;

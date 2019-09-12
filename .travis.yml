@@ -1,0 +1,56 @@
+# in travis settings  
+#  - Limit concurrent jobs: 1
+#  - env: ANACONDA_LOGIN=...
+#  - env: ANACONDA_PASSWORD=...
+language: shell
+os:
+  - linux
+  - osx
+  - windows
+  
+env:
+  - PYTHON_VERSION=3.5
+  - PYTHON_VERSION=3.6
+  - PYTHON_VERSION=3.7
+
+osx_image: xcode11    # Python 3.7.4 running on macOS 10.14.4
+
+install:
+  # linux
+  - if [ "$TRAVIS_OS_NAME" = "linux" ];
+    then
+        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+        bash miniconda.sh -b -p $HOME/miniconda;
+        eval "$($HOME/miniconda/bin/conda shell.bash hook)";
+        hash -r;
+    fi
+  # osx
+  - if [ "$TRAVIS_OS_NAME" = "osx" ];
+    then
+        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
+        bash miniconda.sh -b -p $HOME/miniconda;
+        eval "$($HOME/miniconda/bin/conda shell.bash hook)";
+        hash -r;
+    fi
+  # windows
+  - if [ "$TRAVIS_OS_NAME" = "windows" ];
+    then
+        export PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:$PATH";
+        choco install miniconda3 openssl.light;
+        conda config --set ssl_verify no;
+    fi
+  # anaconda ligin
+  - conda config --set always_yes yes --set changeps1 no 
+  - conda update -q conda
+  # build
+  - conda create -q -n test-environment-$PYTHON_VERSION python=$PYTHON_VERSION conda-build conda-verify anaconda-client
+  - source activate test-environment-$PYTHON_VERSION
+  - conda info -a
+  - echo Y | anaconda login --username $ANACONDA_LOGIN --password $ANACONDA_PASSWORD
+  - conda build . --output-folder dist/conda-$PYTHON_VERSION
+  - OUTPUT_FILE=`find dist/conda-$PYTHON_VERSION -name "*.tar.bz2"`
+  - anaconda upload --force --user agd-lbr "$OUTPUT_FILE"
+script:
+  - echo "OK"
+
+

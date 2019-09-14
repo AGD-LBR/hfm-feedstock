@@ -1,25 +1,25 @@
 About hfm
 =========
 
-Home: 
+Home:
 
 Package license: Licence GPU GPL v3
 
 Feedstock license: BSD 3-Clause
 
-Summary: 
+Summary:
 
 
 Installing hfm
 ==============
 
-Installing `hfm` from the `mirebeau` channel can be achieved by adding `mirebeau` to your channels with:
+Installing `hfm` from the `agd-lbr` channel can be achieved by adding `agd-lbr` to your channels with:
 
 ```
-conda config --add channels mirebeau
+conda config --add channels agd-lbr
 ```
 
-Once the `mirebeau` channel has been enabled, `hfm` can be installed with:
+Once the `agd-lbr` channel has been enabled, `hfm` can be installed with:
 
 ```
 conda install hfm
@@ -28,6 +28,5 @@ conda install hfm
 It is possible to list all of the versions of `hfm` available on your platform with:
 
 ```
-conda search hfm --channel mirebeau
+conda search hfm --channel agd-lbr
 ```
-

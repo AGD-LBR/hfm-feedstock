@@ -64,7 +64,7 @@ install:
   - source activate test-environment-$PYTHON_VERSION
   - conda info -a
   - echo Y | anaconda login --username $ANACONDA_LOGIN --password $ANACONDA_PASSWORD
-  - conda build . --output-folder dist/conda-$PYTHON_VERSION
+  - conda build . --output-folder dist/conda-$PYTHON_VERSION --python=$PYTHON_VERSION
   - OUTPUT_FILE=`find dist/conda-$PYTHON_VERSION -name "*.tar.bz2"`
   - anaconda upload --force --user agd-lbr "$OUTPUT_FILE"
 script:

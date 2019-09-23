@@ -13,13 +13,12 @@ requirements:
     build:
         #- {{ compiler('cxx') }}
         - python {{PY_VER}}*
-        - cmake
-    host:
         - setuptools
         - pybind11
         - numpy
+        - cmake
     run:
-        - pybind11
+        - python {{PY_VER}}*
         - numpy
 
 test:

@@ -10,9 +10,9 @@ build:
     string: py{{ environ.get('PYTHON_VERSION', 'unk') }}
 
 requirements:
-	channels:
-		- conda-forge
-		- agd-lbr
+    channels:
+        - conda-forge
+        - agd-lbr
     build:
         #- {{ compiler('cxx') }}
         - python {{PY_VER}}*

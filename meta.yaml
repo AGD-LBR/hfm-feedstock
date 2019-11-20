@@ -12,7 +12,7 @@ build:
 requirements:
     channels:
         - conda-forge
-        - agd-lbr # Does not seem to work, channel added in conda-build command
+#        - agd-lbr # Does not seem to work, channel added in conda-build command
     build:
         #- {{ compiler('cxx') }}
         - python {{PY_VER}}*
@@ -23,7 +23,7 @@ requirements:
     run:
         - python {{PY_VER}}*
         - numpy
-        - agd
+#        - agd # Not able to build yet
 
 test:
     imports:

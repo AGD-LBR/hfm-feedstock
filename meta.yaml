@@ -23,7 +23,7 @@ requirements:
     run:
         - python {{PY_VER}}*
         - numpy
-#        - agd # Not able to build yet
+        - agd 
 
 test:
     imports:

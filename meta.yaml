@@ -11,8 +11,8 @@ build:
 
 requirements:
     channels:
-        - conda-forge
         - agd-lbr
+        - conda-forge
     build:
         #- {{ compiler('cxx') }}
         - python {{PY_VER}}*

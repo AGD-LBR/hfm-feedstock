@@ -11,8 +11,8 @@ build:
 
 requirements:
     channels:
-        - agd-lbr
         - conda-forge
+        - agd-lbr # Does not seem to work, channel added in conda-build command
     build:
         #- {{ compiler('cxx') }}
         - python {{PY_VER}}*

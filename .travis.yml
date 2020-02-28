@@ -5,9 +5,9 @@
 language: shell
 
 os:
-#  - linux
-#  - osx
-  - windows
+  - linux
+  - osx
+#  - windows
 
 osx_image: xcode11.2    # Python 3.7.4 running on macOS 10.14.4
 dist: xenial

@@ -7,7 +7,7 @@ language: shell
 os:
   - linux
   - osx
-#  - windows
+  - windows
 
 osx_image: xcode11.2    # Python 3.7.4 running on macOS 10.14.4
 dist: xenial
@@ -27,7 +27,7 @@ env:
   - PYTHON_VERSION=3.5
   - PYTHON_VERSION=3.6
   - PYTHON_VERSION=3.7 
-#  - PYTHON_VERSION=3.8 
+  - PYTHON_VERSION=3.8 
 
 
 install:

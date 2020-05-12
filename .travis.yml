@@ -57,7 +57,7 @@ install:
         choco install miniconda3 openssl.light;
         conda config --set ssl_verify no;
     fi
-  # anaconda ligin
+  # anaconda login
   - conda config --set always_yes yes --set changeps1 no 
   - conda update -q conda
   # build

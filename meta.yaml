@@ -1,6 +1,6 @@
 package:
     name: hfm
-    version: 0.2.6
+    version: 0.2.7
 
 source:
     git_url: https://github.com/Mirebeau/HamiltonFastMarching

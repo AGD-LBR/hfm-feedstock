@@ -5,8 +5,8 @@
 language: shell
 
 os:
-  - linux
-  - osx
+#  - linux
+#  - osx
   - windows
 
 osx_image: xcode11.2    # Python 3.7.4 running on macOS 10.14.4
@@ -27,7 +27,7 @@ env:
   - PYTHON_VERSION=3.5
   - PYTHON_VERSION=3.6
   - PYTHON_VERSION=3.7 
-  - PYTHON_VERSION=3.8 
+#  - PYTHON_VERSION=3.8 
 
 
 install:
@@ -56,6 +56,10 @@ install:
         export PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:$PATH";
         choco install miniconda3 openssl.light;
         conda config --set ssl_verify no;
+        # Need vs2019 for c++17
+        choco install visualstudio2019community
+        choco install visualstudio2019-workload-nativedesktop
+        export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
     fi
   # anaconda login
   - conda config --set always_yes yes --set changeps1 no 

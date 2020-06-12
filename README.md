@@ -11,7 +11,7 @@ Summary:
 
 
 Installing hfm
-==============
+============== 
 
 Installing `hfm` from the `agd-lbr` channel can be achieved by adding `agd-lbr` to your channels with:
 

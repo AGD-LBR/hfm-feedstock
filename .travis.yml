@@ -30,6 +30,7 @@ env:
   # - PYTHON_VERSION=3.8 
 
 install:
+  - echo $TEST_VAR
   # linux
   - if [ "$TRAVIS_OS_NAME" = "linux" ];
     then

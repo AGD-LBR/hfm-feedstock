@@ -29,7 +29,6 @@ env:
   - PYTHON_VERSION=3.7 
 #  - PYTHON_VERSION=3.8 
 
-
 install:
   # linux
   - if [ "$TRAVIS_OS_NAME" = "linux" ];

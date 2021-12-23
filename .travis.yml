@@ -20,8 +20,8 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - gcc-9
-    - g++-9
+    - gcc
+    - g++
 
 env:
   - PYTHON_VERSION=3.7 

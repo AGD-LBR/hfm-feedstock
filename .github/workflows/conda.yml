@@ -1,16 +1,6 @@
 name: build conda
 on: [push]
 jobs:
-  #   check-bats-version:
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - uses: actions/checkout@v2
-  #       - uses: actions/setup-node@v2
-  #         with:
-  #           node-version: '14'
-  #       - run: npm install -g bats
-  #       - run: bats -v 
-  # jobs:
   build_conda:
     name: build conda (${{ matrix.python-version }}, ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
@@ -20,22 +10,30 @@ jobs:
         os: ["ubuntu-latest"] # , "macos-latest", "windows-latest"
         python-version: ["3.7"] # , "3.8", "3.9"
     steps:
+      - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:
-          auto-update-conda: true
           python-version: ${{ matrix.python-version }}
+          auto-activate-base: false
+          auto-update-conda: true
       - name: Conda build
         shell: bash -l {0}
         env:
           ANACONDA_LOGIN: ${{ secrets.ANACONDA_LOGIN }}
           ANACONDA_PASSWORD: ${{ secrets.ANACONDA_PASSWORD }}
         run: |
-          conda config --set always_yes yes --set changeps1 no 
-          # conda update -q conda
-          conda create -q -n test-environment-${{ matrix.python-version }} python=${{ matrix.python-version }} conda-build conda-verify anaconda-client
-          source activate test-environment-${{ matrix.python-version }}
-          # conda info -a
           echo Y | anaconda login --username $ANACONDA_LOGIN --password "$ANACONDA_PASSWORD"
           conda build . --output-folder dist/conda-${{ matrix.python-version }} --python=${{ matrix.python-version }} -c agd-lbr
           OUTPUT_FILE=`find dist/conda-${{ matrix.python-version }} -name "*.tar.bz2"`
           anaconda upload --force --user agd-lbr "$OUTPUT_FILE"
+
+# conda config --set always_yes yes --set changeps1 no 
+# # conda update -q conda
+# #conda create -q -n test-environment-${{ matrix.python-version }} python=${{ matrix.python-version }} conda-build conda-verify anaconda-client
+# conda create -q -n test-environment-${{ matrix.python-version }} python=${{ matrix.python-version }} conda-build conda-verify anaconda-client
+# source activate test-environment-${{ matrix.python-version }}
+# # conda info -a
+# echo Y | anaconda login --username $ANACONDA_LOGIN --password "$ANACONDA_PASSWORD"
+# conda build . --output-folder dist/conda-${{ matrix.python-version }} --python=${{ matrix.python-version }} -c agd-lbr
+# OUTPUT_FILE=`find dist/conda-${{ matrix.python-version }} -name "*.tar.bz2"`
+# anaconda upload --force --user agd-lbr "$OUTPUT_FILE"

@@ -1,8 +1,8 @@
 name: test
 
-channels:
-  - conda-forge
-  - defaults
+# channels:
+#   - conda-forge
+#   - defaults
 
 dependencies:
   - conda-build

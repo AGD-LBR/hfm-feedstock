@@ -14,6 +14,7 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: ${{ matrix.python-version }}
+          environment-file: environment.yaml
           auto-activate-base: false
           auto-update-conda: true
       - name: Conda build

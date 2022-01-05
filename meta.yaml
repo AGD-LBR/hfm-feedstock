@@ -7,14 +7,14 @@ source:
 
 build:
     number: 1000
-    string: py{{ environ.get('PYTHON_VERSION', 'unk') }}
+    string: py{{PY_VER}}
 
 requirements:
     channels:
         - conda-forge
-#        - agd-lbr # Does not seem to work, channel added in conda-build command
-    build:
-        #- {{ compiler('cxx') }}
+        # - agd-lbr # Does not seem to work, channel added in conda-build command
+    host:
+        - {{ compiler('cxx') }}
         - python {{PY_VER}}*
         - setuptools
         - pybind11
@@ -36,6 +36,5 @@ about:
 
 extra:
     recipe-maintainers:
-        - gouarin
         - hleclerc
         

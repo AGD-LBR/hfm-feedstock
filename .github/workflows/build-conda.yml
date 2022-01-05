@@ -20,15 +20,15 @@ jobs:
       - name: Conda build
         shell: bash -l {0}
         env:
-          ANACONDA_LOGIN: ${{ secrets.ANACONDA_LOGIN }}
           ANACONDA_PASSWORD: ${{ secrets.ANACONDA_PASSWORD }}
+          ANACONDA_LOGIN: ${{ secrets.ANACONDA_LOGIN }}
         run: |
-          conda build . --output-folder dist/conda-${{ matrix.python-version }} --python=${{ matrix.python-version }} -c agd-lbr
+          conda build . --output-folder dist/conda-${{ matrix.python-version }} --python=${{ matrix.python-version }} -c AGD-LBR
           OUTPUT_FILE=`find dist/conda-${{ matrix.python-version }} -name "*.tar.bz2"`
           echo Y | anaconda login --username $ANACONDA_LOGIN --password "$ANACONDA_PASSWORD"
           anaconda upload --force --user agd-lbr "$OUTPUT_FILE"
 
-
+#
 # conda config --set always_yes yes --set changeps1 no 
 # # conda update -q conda
 # #conda create -q -n test-environment-${{ matrix.python-version }} python=${{ matrix.python-version }} conda-build conda-verify anaconda-client
@@ -39,3 +39,4 @@ jobs:
 # conda build . --output-folder dist/conda-${{ matrix.python-version }} --python=${{ matrix.python-version }} -c agd-lbr
 # OUTPUT_FILE=`find dist/conda-${{ matrix.python-version }} -name "*.tar.bz2"`
 # anaconda upload --force --user agd-lbr "$OUTPUT_FILE"
+# OUTPUT_FILE=`find dist/conda-3.9 -name "*.tar.bz2"`

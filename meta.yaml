@@ -15,6 +15,7 @@ requirements:
         # - agd-lbr # Does not seem to work, channel added in conda-build command
     host:
         - {{ compiler('cxx') }}
+        - {{ compiler('c') }}
         - python {{PY_VER}}*
         - setuptools
         - pybind11

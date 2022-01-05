@@ -29,7 +29,7 @@ jobs:
           conda build . --output-folder dist/conda-${{ matrix.python-version }} --python=${{ matrix.python-version }} -c AGD-LBR
           OUTPUT_FILE=`find dist/conda-${{ matrix.python-version }} -name "*.tar.bz2"`
           echo Y | anaconda login --username $ANACONDA_LOGIN --password "$ANACONDA_PASSWORD"
-          anaconda upload --force --user agd-lbr "$OUTPUT_FILE"
+          echo Y | anaconda upload --force --user agd-lbr "$OUTPUT_FILE"
 
 #
 # conda config --set always_yes yes --set changeps1 no 

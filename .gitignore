@@ -2,3 +2,4 @@
 dist/
 build_artifacts
 .github/.DS_Store
+.DS_Store
